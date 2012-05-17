@@ -1,0 +1,391 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="datatable/js/jquery.dataTables.js" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="datatable/js/jquery.js"></script>
+    <script type="text/javascript" src="datatable/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>   
+        <title>Account TMBBANK</title>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#table').dataTable(
+                    {
+                        "bFilter": false,
+                        "bPaginate": false,
+                        "bInfo": false,
+                    }
+                );
+            } );
+        </script>  
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">Rahakott</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="index.html">Summary</a></li>
+              <li><a href="summary.html">Matrix</a></li>              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <h1>TMBBANK</h1>
+        <ul>
+          <li>Currency: CHF</li>
+          <li>Type: assets</li>
+          <li>Managed: true</li>
+          <li>Opening balance: 0</li>
+        </ul>
+       <table id="table" class="table-striped span12 table-bordered">
+          <thead>
+             <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th></th>
+                <th>Converted</th>
+                <th></th>
+                <th>Balance</th>
+                <th></th>
+              </tr>
+          </thead>
+          <tbody>                   
+          <tr>
+             <td>Jan 1, 2010</td>
+             <td>Migros Zurich</td>
+             <td>-20</td>
+             <td>CHF</td>
+             <td>-20</td>
+             <td>CHF</td>
+             <td>-20</td>
+             <td><a href="FOOD.html"><span class="label label-info">FOOD</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jan 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,020</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jan 15, 2010</td>
+             <td>Migros Zurich</td>
+             <td>-120</td>
+             <td>CHF</td>
+             <td>-120</td>
+             <td>CHF</td>
+             <td>-1,140</td>
+             <td><a href="FOOD.html"><span class="label label-info">FOOD</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jan 15, 2010</td>
+             <td>Talharu</td>
+             <td>-20.5</td>
+             <td>CHF</td>
+             <td>-20.5</td>
+             <td>CHF</td>
+             <td>-1,160.5</td>
+             <td><a href="UNKNOWN.html"><span class="label label-info">UNKNOWN</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jan 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>6,839.5</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Feb 4, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>5,839.5</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Feb 4, 2010</td>
+             <td>Migros Bulach</td>
+             <td>-152.5</td>
+             <td>CHF</td>
+             <td>-152.5</td>
+             <td>CHF</td>
+             <td>5,687</td>
+             <td><a href="FOOD.html"><span class="label label-info">FOOD</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Feb 4, 2010</td>
+             <td>Digitec gmbh</td>
+             <td>-12.5</td>
+             <td>CHF</td>
+             <td>-12.5</td>
+             <td>CHF</td>
+             <td>5,674.5</td>
+             <td><a href="GADGETS.html"><span class="label label-info">GADGETS</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Feb 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>13,674.5</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Mar 1, 2010</td>
+             <td>Migros Bulach</td>
+             <td>-212.5</td>
+             <td>CHF</td>
+             <td>-212.5</td>
+             <td>CHF</td>
+             <td>13,462</td>
+             <td><a href="FOOD.html"><span class="label label-info">FOOD</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Mar 6, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>12,462</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Mar 9, 2010</td>
+             <td>Migros Bulach</td>
+             <td>-102.5</td>
+             <td>CHF</td>
+             <td>-102.5</td>
+             <td>CHF</td>
+             <td>12,359.5</td>
+             <td><a href="FOOD.html"><span class="label label-info">FOOD</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Mar 25, 2010</td>
+             <td>Shell petrolstation</td>
+             <td>-152.5</td>
+             <td>CHF</td>
+             <td>-152.5</td>
+             <td>CHF</td>
+             <td>12,207</td>
+             <td><a href="AUTO.html"><span class="label label-info">AUTO</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Mar 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>20,207</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Apr 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>19,207</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Apr 15, 2010</td>
+             <td>Shell petrolstation</td>
+             <td>-52.5</td>
+             <td>CHF</td>
+             <td>-52.5</td>
+             <td>CHF</td>
+             <td>19,154.5</td>
+             <td><a href="AUTO.html"><span class="label label-info">AUTO</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Apr 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>27,154.5</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>May 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>26,154.5</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>May 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>34,154.5</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>May 29, 2010</td>
+             <td>Shell petrolstation</td>
+             <td>-52.5</td>
+             <td>CHF</td>
+             <td>-52.5</td>
+             <td>CHF</td>
+             <td>34,102</td>
+             <td><a href="AUTO.html"><span class="label label-info">AUTO</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jun 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>33,102</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jun 15, 2010</td>
+             <td>C & A Bambaloo</td>
+             <td>-150</td>
+             <td>CHF</td>
+             <td>-150</td>
+             <td>CHF</td>
+             <td>32,952</td>
+             <td><a href="CLOTHES.html"><span class="label label-info">CLOTHES</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jun 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>40,952</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jul 4, 2010</td>
+             <td>Digitec gmbh</td>
+             <td>-23.5</td>
+             <td>CHF</td>
+             <td>-23.5</td>
+             <td>CHF</td>
+             <td>40,928.5</td>
+             <td><a href="GADGETS.html"><span class="label label-info">GADGETS</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Jul 28, 2010</td>
+             <td>Salary from Rahakott GMBH</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>8,000</td>
+             <td>CHF</td>
+             <td>48,928.5</td>
+             <td><a href="SALARY.html"><span class="label label-info">SALARY</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Aug 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>47,928.5</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          <tr>
+             <td>Sep 3, 2010</td>
+             <td>Karl Bross renting fee</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>-1,000</td>
+             <td>CHF</td>
+             <td>46,928.5</td>
+             <td><a href="RENTAL.html"><span class="label label-info">RENTAL</span></a></td>
+             
+          </tr>
+          </tbody>
+          </table>       
+      
+    </div> <!-- /container -->
+  
+
+  </body>
+</html>
+
+
+ 
