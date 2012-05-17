@@ -1,0 +1,12 @@
+{"book":
+   {"defaultCurrency" : "CHF",
+    "accountTypes":
+      {
+       "MORTGAGE":"loan",
+       "CREDITCARD" : "assets",
+       "TMBBANK" : "assets",
+       "SALARY" : "income"
+      }
+   }
+}
+

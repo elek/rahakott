@@ -1,0 +1,13 @@
+{
+  "currency": "USD",
+  "parsing": {
+    "A.*.csv": {
+      "parser": "csv",
+      "classification": {
+      }
+    }
+  }
+}
+
+
+
