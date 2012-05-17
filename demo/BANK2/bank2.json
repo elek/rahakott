@@ -1,0 +1,28 @@
+{
+  "currency": "USD",
+  "endBalance" : 15000,
+  "parsing": {
+    ".*.csv": {
+      "parser": "csv",
+      "parameters": {
+         "datePattern" : "yyyy.MM.dd",
+         "descriptionIdx" : 1,
+         "depositIdx" : 2,
+         "withdrawalIdx" : 2,
+         "dateIdx" : 0,
+         "separator": ","
+      },
+      "classification": {
+         "Migro" : "FOOD",
+         "Rahakott" : "SALARY",
+         "Karl" : "RENTAL",
+         "Digitec" : "GADGETS",
+         "C & A" : "CLOTHES",
+         "Shell" : "AUTO"
+      }
+    }
+  }
+}
+
+
+

@@ -5,7 +5,8 @@
        "MORTGAGE":"loan",
        "CREDITCARD" : "assets",
        "TMBBANK" : "assets",
-       "SALARY" : "income"
+       "SALARY" : "income",
+       "BANK2" : "assets"
       }
    }
 }

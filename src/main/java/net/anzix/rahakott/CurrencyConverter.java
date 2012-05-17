@@ -11,12 +11,6 @@ public class CurrencyConverter {
 
 	public CurrencyConverter() {
 		super();
-
-		this.rates.put("CHFUSD", new TreeMap<Date, Double>());
-		this.rates.put("USDCHF", new TreeMap<Date, Double>());
-		this.rates.get("USDCHF").put(new Date(), 12d);
-		this.rates.get("USDCHF").put(new Date(), 13d);
-
 	}
 
 	public static CurrencyConverter INSTANCE = new CurrencyConverter();
@@ -29,7 +23,7 @@ public class CurrencyConverter {
 			throw new IllegalArgumentException("No currency rate for " + from
 					+ to);
 		} else {
-			return rates.get(from + to).get(0) * amount;
+			return rates.get(from + to).values().iterator().next() * amount;
 		}
 	}
 }
