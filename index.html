@@ -42,7 +42,7 @@
         data_assets.addColumn('string', 'Account');
         data_assets.addColumn('number', 'Balance');
         data_assets.addRows([
-          ['TMBBANK', Math.abs(46928)],
+          ['TMBBANK', Math.abs(45728)],
           ['BANK2', Math.abs(14100)],
         ]);
 
@@ -54,26 +54,6 @@
         // Instantiate and draw our chart, passing in some options.
         var chart_assets = new google.visualization.PieChart(document.getElementById('chart_assets'));
         chart_assets.draw(data_assets, options_assets);
-        var data_expense = new google.visualization.DataTable();
-        data_expense.addColumn('string', 'Account');
-        data_expense.addColumn('number', 'Balance');
-        data_expense.addRows([
-          ['FOOD', Math.abs(608)],
-          ['RENTAL', Math.abs(8000)],
-          ['UNKNOWN', Math.abs(171)],
-          ['GADGETS', Math.abs(36)],
-          ['AUTO', Math.abs(258)],
-          ['CLOTHES', Math.abs(150)],
-        ]);
-
-        // Set chart options
-        var options_expense = {'title':'expense',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart_expense = new google.visualization.PieChart(document.getElementById('chart_expense'));
-        chart_expense.draw(data_expense, options_expense);
         var data_income = new google.visualization.DataTable();
         data_income.addColumn('string', 'Account');
         data_income.addColumn('number', 'Balance');
@@ -89,6 +69,28 @@
         // Instantiate and draw our chart, passing in some options.
         var chart_income = new google.visualization.PieChart(document.getElementById('chart_income'));
         chart_income.draw(data_income, options_income);
+        var data_expenses = new google.visualization.DataTable();
+        data_expenses.addColumn('string', 'Account');
+        data_expenses.addColumn('number', 'Balance');
+        data_expenses.addRows([
+          ['UNKNOWN', Math.abs(1333)],
+          ['FOOD', Math.abs(608)],
+          ['RENTAL', Math.abs(8000)],
+          ['GADGETS', Math.abs(36)],
+          ['AUTO', Math.abs(258)],
+          ['CLOTHES', Math.abs(150)],
+          ['DONATIONS', Math.abs(19)],
+          ['GADGET', Math.abs(19)],
+        ]);
+
+        // Set chart options
+        var options_expenses = {'title':'expenses',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart_expenses = new google.visualization.PieChart(document.getElementById('chart_expenses'));
+        chart_expenses.draw(data_expenses, options_expenses);
       
         }
         </script> 
@@ -123,7 +125,7 @@
           <table class="table-striped span4">
           <tr>
              <td><a href="TMBBANK.html">TMBBANK</a></td>
-             <td>46,928.5</td>
+             <td>45,728.5</td>
           </tr>         
           <tr>
              <td><a href="BANK2.html">BANK2</a></td>
@@ -133,40 +135,6 @@
           </div>
           <div class="span4">
              <div id="chart_assets"></div>
-          </div>
-          </div>   
-          <div class="row">
-          <div class="span4">
-          <h1>expense</h1>
-          <table class="table-striped span4">
-          <tr>
-             <td><a href="FOOD.html">FOOD</a></td>
-             <td>607.5</td>
-          </tr>         
-          <tr>
-             <td><a href="RENTAL.html">RENTAL</a></td>
-             <td>8,000</td>
-          </tr>         
-          <tr>
-             <td><a href="UNKNOWN.html">UNKNOWN</a></td>
-             <td>170.9</td>
-          </tr>         
-          <tr>
-             <td><a href="GADGETS.html">GADGETS</a></td>
-             <td>36</td>
-          </tr>         
-          <tr>
-             <td><a href="AUTO.html">AUTO</a></td>
-             <td>257.5</td>
-          </tr>         
-          <tr>
-             <td><a href="CLOTHES.html">CLOTHES</a></td>
-             <td>150</td>
-          </tr>         
-          </table>
-          </div>
-          <div class="span4">
-             <div id="chart_expense"></div>
           </div>
           </div>   
           <div class="row">
@@ -181,6 +149,48 @@
           </div>
           <div class="span4">
              <div id="chart_income"></div>
+          </div>
+          </div>   
+          <div class="row">
+          <div class="span4">
+          <h1>expenses</h1>
+          <table class="table-striped span4">
+          <tr>
+             <td><a href="UNKNOWN.html">UNKNOWN</a></td>
+             <td>1,333.3</td>
+          </tr>         
+          <tr>
+             <td><a href="FOOD.html">FOOD</a></td>
+             <td>607.5</td>
+          </tr>         
+          <tr>
+             <td><a href="RENTAL.html">RENTAL</a></td>
+             <td>8,000</td>
+          </tr>         
+          <tr>
+             <td><a href="GADGETS.html">GADGETS</a></td>
+             <td>36</td>
+          </tr>         
+          <tr>
+             <td><a href="AUTO.html">AUTO</a></td>
+             <td>257.5</td>
+          </tr>         
+          <tr>
+             <td><a href="CLOTHES.html">CLOTHES</a></td>
+             <td>150</td>
+          </tr>         
+          <tr>
+             <td><a href="DONATIONS.html">DONATIONS</a></td>
+             <td>18.8</td>
+          </tr>         
+          <tr>
+             <td><a href="GADGET.html">GADGET</a></td>
+             <td>18.8</td>
+          </tr>         
+          </table>
+          </div>
+          <div class="span4">
+             <div id="chart_expenses"></div>
           </div>
           </div>   
        
