@@ -1,15 +1,13 @@
-package net.anzix.rahakott.model.config;
+package net.anzix.rahakott;
 
 import java.io.File;
 import java.io.FileReader;
 
-import net.anzix.rahakott.RahakottException;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class Configuration {
-	public BookConfiguration book = new BookConfiguration();
+public class Rahakott {
+	public static final String UNKNOWN = "UNKNOWN";
 
 	public static <T> T read(File file, Class<? extends T> type) {
 		try {
@@ -19,7 +17,8 @@ public class Configuration {
 			reader.close();
 			return c;
 		} catch (Exception ex) {
-			throw new RahakottException(ex);
+			throw new RahakottException("Error on loading file"
+					+ file.getAbsolutePath(), ex);
 		}
 	}
 }

@@ -58,21 +58,20 @@ public class ZKBParser implements FileParser {
 		if (lines.size() == 0) {
 			return;
 		} else if (lines.size() == 1) {
-			String accName = p.guessAccount(lines.get(0)[1]);
+
 			Date date = getDate(lines.get(0)[0]);
-			Account c = b.getOrCreateAccount(accName,
-					p.getAccountConfig().currency);
+			Account to = b.getOrCreateAccount("UNKNOWN",
+					b.getDefaultCurrency());
 			double amount = getAmount(lines.get(0)[6], lines.get(0)[5]);
-			b.addTransaction(new Transaction(current, c, date, lines.get(0)[1],
-					amount, p.getAccountConfig().currency));
+			b.addTransaction(new Transaction(current, to, date,
+					lines.get(0)[1], amount, p.getAccountConfig().currency));
 		} else {
 			double partial = 0;
 			Date date = getDate(lines.get(0)[0]);
 			for (int i = 1; i < lines.size(); i++) {
 				String desc = getDesc(lines.get(0)[1], lines.get(i)[1]);
-				String accName = p.guessAccount(desc);
-				Account c = b.getOrCreateAccount(accName,
-						p.getAccountConfig().currency);
+				Account to = b.getOrCreateAccount("UNKNOWN",
+						b.getDefaultCurrency());
 				double amount;
 				if (lines.get(i)[2].trim().length() > 0) {
 					amount = Double.valueOf(lines.get(i)[2].trim()) * -1;
@@ -82,7 +81,7 @@ public class ZKBParser implements FileParser {
 				} else {
 					amount = getAmount(lines.get(0)[6], lines.get(0)[5]);
 				}
-				b.addTransaction(new Transaction(current, c, date, desc,
+				b.addTransaction(new Transaction(current, to, date, desc,
 						amount, p.getAccountConfig().currency));
 			}
 

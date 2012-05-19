@@ -10,14 +10,6 @@
          "withdrawalIdx" : 2,
          "dateIdx" : 0,
          "separator": ";"
-      },
-      "classification": {
-         "Migro" : "FOOD",
-         "Rahakott" : "SALARY",
-         "Karl" : "RENTAL",
-         "Digitec" : "GADGETS",
-         "C & A" : "CLOTHES",
-         "Shell" : "AUTO"
       }
     }
   }

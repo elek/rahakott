@@ -38,17 +38,14 @@ public class SummaryGenerator extends PageGenerator<Book> {
 								.getYear() == t.getDate().getYear())) {
 				} else {
 					int month = prev.getMonth();
-					put(input,
-							"" + (prev.getYear() + 1900),
-							a.getType(),
-							a.getName(),
-							(month < 9 ? "0" : "") + (month + 1),
+					put(input, "" + (prev.getYear() + 1900), a.getType(),
+							a.getName(), (month < 9 ? "0" : "") + (month + 1),
 							CurrencyConverter.INSTANCE.convert(prev,
 									a.getCurrency(),
-									input.getConfig().defaultCurrency, balance),
+									input.getDefaultCurrency(), balance),
 							CurrencyConverter.INSTANCE.convert(prev,
 									a.getCurrency(),
-									input.getConfig().defaultCurrency, monch));
+									input.getDefaultCurrency(), monch));
 					monch = 0;
 				}
 				balance = a.nextBalance(t, balance);
@@ -61,11 +58,10 @@ public class SummaryGenerator extends PageGenerator<Book> {
 				put(input, "" + (prev.getYear() + 1900), a.getType(),
 						a.getName(), (month < 9 ? "0" : "") + (month + 1),
 						CurrencyConverter.INSTANCE.convert(prev,
-								a.getCurrency(),
-								input.getConfig().defaultCurrency, balance),
-						CurrencyConverter.INSTANCE.convert(prev,
-								a.getCurrency(),
-								input.getConfig().defaultCurrency, monch));
+								a.getCurrency(), input.getDefaultCurrency(),
+								balance), CurrencyConverter.INSTANCE.convert(
+								prev, a.getCurrency(),
+								input.getDefaultCurrency(), monch));
 			}
 		}
 

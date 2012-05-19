@@ -17,7 +17,7 @@ public class CSVParserTest {
 	@Test
 	public void test() {
 		CSVParser parser = new CSVParser();
-		Book b = new Book(new BookConfiguration());
+		Book b = new Book();
 		Account c = b.getOrCreateAccount("A","HUF");
 		Transaction t = parser.parseLine(c, b,
 				"2011-01-24,Jahresgeb Karte ,BANK,,20,-20,,".split(","),new ParserContext(new AccountConfig(), new AccountParsing()), new SimpleDateFormat());

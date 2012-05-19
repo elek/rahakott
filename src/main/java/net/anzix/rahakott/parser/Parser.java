@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.anzix.rahakott.CurrencyConverter;
+import net.anzix.rahakott.Rahakott;
 import net.anzix.rahakott.RahakottException;
 import net.anzix.rahakott.model.Account;
 import net.anzix.rahakott.model.Book;
 import net.anzix.rahakott.model.config.AccountConfig;
 import net.anzix.rahakott.model.config.AccountParsing;
-import net.anzix.rahakott.model.config.Configuration;
 
 public class Parser {
 	private Map<String, FileParser> parser = new HashMap<String, FileParser>();
@@ -22,15 +22,13 @@ public class Parser {
 
 	}
 
-	public Book read(File root) {
-		Configuration c = Configuration.read(new File(root, "rahakott.json"),
-				Configuration.class);
+	public Book read(File root, Book b) {
+
 		File fx = new File(root, "fx.json");
 		if (fx.exists()) {
-			CurrencyConverter.INSTANCE = Configuration.read(fx,
+			CurrencyConverter.INSTANCE = Rahakott.read(fx,
 					CurrencyConverter.class);
 		}
-		Book b = new Book(c.book);
 
 		for (File f : root.listFiles()) {
 			if (f.isDirectory()) {
@@ -40,7 +38,7 @@ public class Parser {
 					System.out.println("Loading data from dir "
 							+ f.getAbsolutePath());
 
-					AccountConfig accountConfig = Configuration.read(
+					AccountConfig accountConfig = Rahakott.read(
 							configFile, AccountConfig.class);
 					Account a = b.getOrCreateAccount(f.getName(),
 							accountConfig.currency);

@@ -1,5 +1,4 @@
-{"book":
-   {"defaultCurrency" : "CHF",
+{"defaultCurrency" : "CHF",
     "accountTypes":
       {
        "MORTGAGE":"loan",
@@ -8,6 +7,5 @@
        "SALARY" : "income",
        "BANK2" : "assets"
       }
-   }
 }
 

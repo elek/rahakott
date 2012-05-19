@@ -1,5 +1,10 @@
 package net.anzix.rahakott.model;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import net.anzix.rahakott.CurrencyConverter;
@@ -11,6 +16,8 @@ public class Transaction {
 	private String description;
 	double amount;
 	private String currency;
+	MessageDigest md;
+	DateFormat df = new SimpleDateFormat("yyyyMMdd");
 
 	public Transaction(Account from, Account to, Date date, String description,
 			double amount, String currency) {
@@ -20,6 +27,11 @@ public class Transaction {
 		this.date = date;
 		this.amount = amount;
 		this.currency = currency;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public Date getDate() {
@@ -75,8 +87,18 @@ public class Transaction {
 	}
 
 	public double getNormalAmount(Account a) {
-		return CurrencyConverter.INSTANCE.convert(date,
-				currency, a.getCurrency(), a.getAmount(this));
+		return CurrencyConverter.INSTANCE.convert(date, currency,
+				a.getCurrency(), a.getAmount(this));
 	}
 
+	public String getKey() {
+		String key = df.format(date) + ";" + description + ";"
+				+ "".format("%1$.2f", amount);
+		BigInteger bigInt = new BigInteger(1, md.digest(key.getBytes()));
+		String hashtext = bigInt.toString(16);
+		while (hashtext.length() < 32) {
+			hashtext = "0" + hashtext;
+		}
+		return hashtext;
+	}
 }

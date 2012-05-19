@@ -14,7 +14,15 @@ public class App {
 	private void run(String args[]) {
 		Parser p = new Parser();
 		File root = new File(args[0]);
-		Book b = p.read(root);
+		Book b = Rahakott.read(new File(root, "rahakott.json"), Book.class);
+		p.read(root,b);
+		PatternClassifier cl = Rahakott.read(new File(root,
+				"classification.json"), PatternClassifier.class);
+		
+		ManualClassifier m = new ManualClassifier();
+		m.save(root, b);
+		m.process(root, b);
+		cl.parse(b);
 		b.recalculate();
 		new HtmlGenerator().output(b, new File(args[1]));
 

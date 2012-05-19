@@ -61,13 +61,14 @@ public class CSVParser implements FileParser {
 
 		AccountParsing conf = p.getParsing();
 		String description = getDescription(nextLine, p);
-		String accName = p.guessAccount(description);
+		
 
-		Account c = b
-				.getOrCreateAccount(accName, p.getAccountConfig().currency);
+		Account to = b
+				.getOrCreateAccount("UNKNOWN", b.getDefaultCurrency());
 		double amount = getAmount(nextLine[conf.getInt("depositIdx")],
-				nextLine[conf.getInt("withdrawalIdx")]) * p.getParsing().fixAmount;
-		return new Transaction(current, c, getDate(df,
+				nextLine[conf.getInt("withdrawalIdx")])
+				* p.getParsing().fixAmount;
+		return new Transaction(current, to, getDate(df,
 				nextLine[conf.getInt("dateIdx")]), description, amount,
 				p.getAccountConfig().currency);
 	}

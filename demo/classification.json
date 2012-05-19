@@ -1,0 +1,11 @@
+{
+"patterns" : {
+"Migro" : "FOOD",
+"Rahakott" : "SALARY",
+"Karl" : "RENTAL",
+"Digitec" : "GADGETS",
+"C & A" : "CLOTHES",
+"Shell" : "AUTO",
+"donation" : "DONATIONS"
+}
+}

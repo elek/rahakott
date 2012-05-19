@@ -24,23 +24,46 @@ public class Book {
 	 * Account per type.
 	 */
 	private Map<String, List<String>> accountsPerType = new HashMap<String, List<String>>();
-	/**
-	 * generic configuration.
-	 */
-	private BookConfiguration config;
 
-	public Book(BookConfiguration config) {
+	private String defaultCurrency = "USD";
+
+	private String defaultType = "expenses";
+
+	private Map<String, String> accountTypes = new HashMap<String, String>();
+
+	public String getType(String name) {
+		if (accountTypes.containsKey(name)) {
+			return accountTypes.get(name);
+		}
+		return defaultType;
+	}
+
+	public Book() {
 		super();
-		this.config = config;
 	}
 
 	public Account getAccount(String string) {
 		return accounts.get(string);
 	}
 
+	public void moveTransaction(Transaction t, String original, String moved) {
+		Account movedAcc = getOrCreateAccount(moved, defaultCurrency);
+		Account originalAcc = getAccount(original);
+		if (t.getFrom().equals(originalAcc)) {
+			t.setFrom(movedAcc);
+		} else if (t.getTo().equals(originalAcc)) {
+			t.setTo(movedAcc);
+		} else {
+			throw new IllegalArgumentException("Move from an unknown side" + t
+					+ " " + original + " " + moved);
+		}
+		originalAcc.removeTransaction(t);
+		movedAcc.add(t);
+	}
+
 	public Account getOrCreateAccount(String name, String currency) {
 		if (!accounts.containsKey(name)) {
-			Account a = new Account(name, config.getType(name));
+			Account a = new Account(name, getType(name));
 			a.setCurrency(currency);
 			accounts.put(name, a);
 			if (accountsPerType.get(a.getType()) == null) {
@@ -99,7 +122,24 @@ public class Book {
 		return res;
 	}
 
-	public BookConfiguration getConfig() {
-		return config;
+	public Collection<Account> getAccounts() {
+		return new ArrayList<Account>(accounts.values());
 	}
+
+	public String getDefaultCurrency() {
+		return defaultCurrency;
+	}
+
+	public void setDefaultCurrency(String defaultCurrency) {
+		this.defaultCurrency = defaultCurrency;
+	}
+
+	public String getDefaultType() {
+		return defaultType;
+	}
+
+	public void setDefaultType(String defaultType) {
+		this.defaultType = defaultType;
+	}
+	
 }
