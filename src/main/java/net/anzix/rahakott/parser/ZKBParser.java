@@ -29,6 +29,9 @@ public class ZKBParser implements FileParser {
 			CSVReader reader = new CSVReader(new InputStreamReader(
 					new FileInputStream(file), "ISO-8859-1"), ',', '"');
 
+			//skip first line
+			reader.readNext();
+			
 			String[] nextLine;
 			int i = 1;
 			while ((nextLine = reader.readNext()) != null) {

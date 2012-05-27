@@ -37,7 +37,7 @@
                     <#list 1..12 as month>                    
                        <#assign t = root[year][type][account]>
                         <#if t[month?string("00")]?? >                          
-                          <td>${t[month?string("00")]?string("0")}</td>
+                          <td><a href="${account}.html#${year}.${month?string("00")}">${t[month?string("00")]?string("0")}</a></td>
                        <#else>
                           <td></td>                          
                        </#if>

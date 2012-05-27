@@ -25,8 +25,7 @@ public class Account {
 	}
 
 	public void add(Transaction transaction) {
-		transactions.add(transaction);
-
+       transactions.add(transaction);
 	}
 
 	public String getName() {

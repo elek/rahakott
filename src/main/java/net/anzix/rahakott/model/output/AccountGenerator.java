@@ -1,56 +1,39 @@
 package net.anzix.rahakott.model.output;
 
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import net.anzix.rahakott.CurrencyConverter;
-import net.anzix.rahakott.RahakottException;
 import net.anzix.rahakott.model.Account;
 import net.anzix.rahakott.model.Transaction;
 
 public class AccountGenerator extends PageGenerator<Account> {
+	SimpleDateFormat format = new SimpleDateFormat("yyyy.MM");
+	
+	@Override
+	protected Map<String, Object> populateVariables(Account input) {
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("root", input);
+		
+		Map<String,List<Transaction>> transactionsByMonth = new TreeMap<String,List<Transaction>>();
+		for (Transaction t : input.getTransactions()){
+			String key = format.format(t.getDate());
+			List<Transaction> monthly = transactionsByMonth.get(key);
+			if (monthly == null){
+				transactionsByMonth.put(key, new ArrayList<Transaction>());
+				monthly = transactionsByMonth.get(key);
+			}
+			monthly.add(t);										
+		}
+		values.put("monthly", transactionsByMonth);
+		
+		return values;
+	}
 
-//	@Override
-//	public void generateImpl(PrintWriter writer, Account a) {
-//		try {
-//			header = new Scanner(getClass().getResourceAsStream("/header-account.html")).useDelimiter("\\Z").next();
-//			writer.write("<h1>"+a.getName()+"</h1>");
-//			writer.write("<ul>");
-//			writer.write("<li>Currency: " + a.getCurrency() + "</li>");
-//			writer.write("<li>Type: " + a.getType() + "</li>");
-//			writer.write("<li>Managed: " + a.isManaged() + "</li>");
-//			writer.write("</ul>");
-//			writer.write("<table id=\"table\" class=\"table-striped span12 table-bordered\">");
-//			writer.write("<thead><tr><th>Date</th><th>Description</th><th>Amount</th><th></th><th>Converted</th><th></th><th>Balance</th><th></th></tr></thead>");
-//			double balance = a.getOpeningBalance();
-//			for (Transaction t : a.getTransactions()) {
-//				double normalAmount = CurrencyConverter.INSTANCE.convert(
-//						t.getDate(), t.getCurrency(), a.getCurrency(),
-//						a.getAmount(t));
-//				balance = a.nextBalance(t, balance);
-//				writer.write("<tr>");
-//				writer.write(String.format("<td>%1$ty-%1$tm-%1$td</td>",
-//						t.getDate()));
-//				writer.write(String.format(
-//						"<td>%1$s</td>",
-//						t.getDescription().substring(0,
-//								Math.min(t.getDescription().length(), 60))));
-//				writer.write(String.format("<td>%1$.2f</td>", a.getAmount(t)));
-//				writer.write(String.format("<td>%1$s</td>", t.getCurrency()));
-//				writer.write(String.format("<td>%1$.2f</td>", normalAmount));
-//				writer.write(String.format("<td>%1$s</td>", a.getCurrency()));
-//				writer.write(String.format("<td>%1$.2f</td>", balance));
-//				Account other = a.getOtherSide(t);
-//				writer.write(String
-//						.format("<td><a href=\"%1$s.html\"><span class=\"label label-info\">%1$s</span></a></td>",
-//								other.getName()));
-//				writer.write("</tr>");
-//
-//			}
-//			writer.write("</table>");
-//		} catch (Exception ex) {
-//			throw new RahakottException(ex);
-//		}
-//
-//	}
+
+
+
 }

@@ -22,6 +22,11 @@
           <li>Managed: ${root.managed?string}</li>
           <li>Opening balance: ${root.openingBalance?string}</li>
         </ul>
+        
+       <#assign balance=root.openingBalance>
+       
+       <#list monthly?keys as month>
+       <h2><A name="${month}">${month}</a></h2>
        <table id="table" class="table-striped span12 table-bordered">
           <thead>
              <tr>
@@ -34,16 +39,22 @@
                 <th>Balance</th>
                 <th></th>
               </tr>
-          </thead>
-          <#assign balance=root.openingBalance>
-          <tbody>                   
-          <#list root.transactions as t>
+          </thead>          
+          <tbody>                 
+          <#assign mbalance=0>
+          <#list monthly[month] as t>
           <tr>
              <#assign balance = root.nextBalance(t,balance)>
-             <td>${t.date?date}</td>
+             <#assign mbalance = root.nextBalance(t,mbalance)>
+             <td>${t.date?string("yyyy.MM.dd")}</td>
              <td>${t.description}</td>
-             <td>${root.getAmount(t)}</td>
-             <td>${t.currency}</td>
+             <#if t.currency == root.currency>
+               <td></td>
+               <td></td>
+             <#else>
+               <td>${root.getAmount(t)}</td>
+               <td>${t.currency}</td>
+             </#if>             
              <td>${t.getNormalAmount(root)}</td>
              <td>${root.currency}</td>
              <td>${balance}</td>
@@ -52,6 +63,21 @@
           </tr>
           </#list>
           </tbody>
-          </table>       
+          <tfoot>
+          <thead>
+             <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>${mbalance}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+          </thead>
+          </tfoot>
+          </table>
+          </#list>       
 </#macro>
 <@page_html/> 

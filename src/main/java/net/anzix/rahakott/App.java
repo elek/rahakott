@@ -20,9 +20,12 @@ public class App {
 				"classification.json"), PatternClassifier.class);
 		
 		ManualClassifier m = new ManualClassifier();
-		m.save(root, b);
+		
 		m.process(root, b);
 		cl.parse(b);
+		
+		m.save(root, b);
+		
 		b.recalculate();
 		new HtmlGenerator().output(b, new File(args[1]));
 

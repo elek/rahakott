@@ -1,6 +1,6 @@
 <#include "default.html"> 
 <#macro page_head> 
-        <title>child title override where necessary</title>
+        <title>Rahakott summary</title>
          <script type="text/javascript">
     
         // Load the Visualization API and the piechart package.

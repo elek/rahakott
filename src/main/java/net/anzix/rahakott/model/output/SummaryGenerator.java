@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import sun.io.Converters;
-
 import net.anzix.rahakott.CurrencyConverter;
 import net.anzix.rahakott.model.Account;
 import net.anzix.rahakott.model.Book;
@@ -24,7 +22,7 @@ public class SummaryGenerator extends PageGenerator<Book> {
 
 	@Override
 	protected Map<String, Object> populateVariables(Book input) {
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new TreeMap<String, Object>();
 		List<String> accountNames = new ArrayList<String>();
 		for (String name : input.getAccountNames()) {
 			Account a = input.getAccount(name);

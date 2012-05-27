@@ -73,17 +73,17 @@ public class ManualClassifier {
 				CSVWriter writer = new CSVWriter(new FileWriter(new File(root,
 						a.getName().toUpperCase() + "/" + FILE_NAME)));
 				for (Transaction t : a.getTransactions()) {
-					if (Rahakott.UNKNOWN.equals(t.getTo().getName())) {
-						if (oldAssoc.containsKey(t.getKey())) {
-							writer.writeNext(new String[] {
-									oldAssoc.get(t.getKey()), t.getKey(),
-									f.format(t.getDate()), t.getDescription(),
-									"" + t.getAmount() });
-						} else {
-							writer.writeNext(new String[] { "", t.getKey(),
-									f.format(t.getDate()), t.getDescription(),
-									"" + t.getAmount() });
-						}
+					if (oldAssoc.containsKey(t.getKey())) {
+						writer.writeNext(new String[] {
+								oldAssoc.get(t.getKey()), t.getKey(),
+								f.format(t.getDate()), t.getDescription(),
+								"" + t.getAmount() });
+					}
+
+					else if (Rahakott.UNKNOWN.equals(t.getTo().getName())) {
+						writer.writeNext(new String[] { "", t.getKey(),
+								f.format(t.getDate()), t.getDescription(),
+								"" + t.getAmount() });
 					}
 				}
 				if (writer != null) {
