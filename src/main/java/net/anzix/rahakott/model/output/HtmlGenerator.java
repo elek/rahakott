@@ -9,17 +9,18 @@ import net.anzix.rahakott.model.Account;
 import net.anzix.rahakott.model.Book;
 
 public class HtmlGenerator {
-	public void output(Book b, File file) {
-		new HomeGenerator().generate(new File(file, "index.html"), "index.tpl",
+	public void output(Book b, File root) {
+		new HomeGenerator().generate(new File(root, "index.html"), "index.tpl",
 				b);
-		new SummaryGenerator().generate(new File(file, "summary.html"),
+		new SummaryGenerator().generate(new File(root, "summary.html"),
 				"summary.tpl", b);
 		for (String accountName : b.getAccountNames()) {
 			Account a = b.getAccount(accountName);
-			new AccountGenerator().generate(
-					new File(file, accountName + ".html"), "account.tpl", a);
+			new AccountGenerator().generate(new File(root, accountName
+					+ ".html"), "account.tpl", a);
 		}
-		copyResources(file);
+		copyResources(root);
+		new TransferGenerator().generate(root, b);
 
 	}
 

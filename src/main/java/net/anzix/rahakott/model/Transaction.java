@@ -19,13 +19,11 @@ public class Transaction {
 	double amount;
 	private String currency;
 	private Map<String, String> customFields = new HashMap<String, String>();
-	
+
 	MessageDigest md;
 	DateFormat df = new SimpleDateFormat("yyyyMMdd");
 
-
-	
-	public Transaction(Date date, Account from, Account to, String description,
+	public Transaction(Account from, Account to, Date date, String description,
 			double amount, String currency, Map<String, String> customFields) {
 		super();
 		this.date = date;
@@ -52,7 +50,6 @@ public class Transaction {
 		}
 	}
 
-
 	public Date getDate() {
 		return date;
 	}
@@ -67,6 +64,12 @@ public class Transaction {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public String getShortDescription() {
+		int max = Math.min(description.length(), 60);
+		return description.substring(0, max)
+				+ (max < description.length() ? "..." : "");
 	}
 
 	public double getAmount() {
@@ -112,6 +115,15 @@ public class Transaction {
 	public void setTo(Account to) {
 		this.to = to;
 	}
-	
-	
+
+	public Transaction negated() {
+		Map<String, String> m = new HashMap<String, String>(customFields);
+		return new Transaction(from, to, date, description, -1 * amount,
+				currency, m);
+	}
+
+	public Map<String, String> getCustomValues() {
+		return customFields;
+	}
+
 }

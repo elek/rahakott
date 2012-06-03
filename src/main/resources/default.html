@@ -1,6 +1,9 @@
 <#macro page_head> 
         <title>master title</title> 
-</#macro> 
+</#macro>
+<#macro navigation_body> 
+         
+</#macro>  
 <#macro page_body> 
         master body 
 </#macro> 
@@ -46,20 +49,27 @@
           <a class="brand" href="index.html">Rahakott</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="index.html">Summary</a></li>
+              <li><a href="index.html">Yearly report</a></li>
+              <li><a href="transfers.html">Transfer report</a></li>
               <li><a href="summary.html">Matrix</a></li>              
             </ul>
           </div>
         </div>
       </div>
     </div>
+    
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+        <@navigation_body/>
+    </div>
+    <div class="span10">
+      <@page_body/>
+    </div>
+  </div>
+</div>
 
-    <div class="container">
-
-    <@page_body/>
       
-    </div> <!-- /container -->
-  
 
   </body>
 </html>

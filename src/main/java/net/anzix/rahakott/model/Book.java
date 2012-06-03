@@ -54,7 +54,7 @@ public class Book {
 		} else if (t.getTo().equals(originalAcc)) {
 			t.setTo(movedAcc);
 		} else {
-			throw new IllegalArgumentException("Move from an unknown side" + t
+			throw new IllegalArgumentException("Move from an unknown side " + t.getFrom()+"/"+t.getTo()
 					+ " " + original + " " + moved);
 		}
 		originalAcc.removeTransaction(t);

@@ -23,7 +23,7 @@ public class Account {
 	private String[] customFields = new String[0];
 	private Map<String, Transaction> idx = new HashMap<String, Transaction>();
 
-	Account(String string, String type) {
+	public Account(String string, String type) {
 		this.name = string;
 		this.type = type;
 	}
@@ -50,6 +50,14 @@ public class Account {
 	}
 
 	public void recalculate() {
+		if (config.twoSide) {
+			for (Transaction t : getTransactions()) {
+				if (t.getTo().equals(this) && t.getFrom().isManaged()
+						&& t.getTo().isManaged()) {
+					removeTransaction(t);
+				}
+			}
+		}
 		Collections.sort(transactions, new Comparator<Transaction>() {
 
 			@Override
@@ -201,6 +209,11 @@ public class Account {
 
 	public void setCustomFields(String[] customFields) {
 		this.customFields = customFields;
+	}
+
+	@Override
+	public String toString() {
+		return "Account[name=" + name + "]";
 	}
 
 }

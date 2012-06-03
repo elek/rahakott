@@ -27,17 +27,17 @@
        
        <#list monthly?keys as month>
        <h2><A name="${month}">${month}</a></h2>
-       <table id="table" class="table-striped span12 table-bordered">
+       <table class="table-striped  table-bordered">
           <thead>
              <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th></th>
-                <th>Converted</th>
-                <th></th>
-                <th>Balance</th>
-                <th></th>
+                <th width="70px">Date</th>
+                <th width="500px">Description</th>
+                <th width="70px">Amount</th>
+                <th width="40px"></th>
+                <th width="70px">Converted</th>
+                <th width="40px"></th>
+                <th width="70px">Balance</th>
+                <th width="80px"></th>
               </tr>
           </thead>          
           <tbody>                 
@@ -47,7 +47,7 @@
              <#assign balance = root.nextBalance(t,balance)>
              <#assign mbalance = root.nextBalance(t,mbalance)>
              <td>${t.date?string("yyyy.MM.dd")}</td>
-             <td>${t.description}</td>
+             <td>${t.shortDescription}</td>
              <#if t.currency == root.currency>
                <td></td>
                <td></td>

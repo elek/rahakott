@@ -52,6 +52,11 @@ public class CustomFieldProcessor {
 			while ((line = reader.readNext()) != null) {
 				String key = line[1];
 				Transaction t = account.getTransaction(key);
+				if (t == null) {
+					System.err.println("Can't find the transaction for key "
+							+ line[1] + " " + f.getAbsolutePath());
+					continue;
+				}
 				for (int i = 0; i < types.length; i++) {
 					t.addCustomValue(types[i], line[i]);
 				}
@@ -74,7 +79,7 @@ public class CustomFieldProcessor {
 					continue;
 				}
 				CSVWriter writer = new CSVWriter(new FileWriter(new File(root,
-						a.getName().toUpperCase() + "/" + FILE_NAME + "v2")));
+						a.getName().toUpperCase() + "/" + FILE_NAME)));
 				for (Transaction t : a.getTransactions()) {
 					String[] customs = a.getCustomFields();
 					String[] lineTo = new String[customs.length + 2];
