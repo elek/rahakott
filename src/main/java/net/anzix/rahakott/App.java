@@ -16,15 +16,22 @@ public class App {
 		File root = new File(args[0]);
 		Book b = Rahakott.read(new File(root, "rahakott.json"), Book.class);
 		p.read(root,b);
-		PatternClassifier cl = Rahakott.read(new File(root,
+		PatternClassifier patternClassifier = Rahakott.read(new File(root,
 				"classification.json"), PatternClassifier.class);
 		
-		ManualClassifier m = new ManualClassifier();
+		CustomFieldProcessor customFieldProcessor = new CustomFieldProcessor();
 		
-		m.process(root, b);
-		cl.parse(b);
+		customFieldProcessor.process(root, b);
 		
-		m.save(root, b);
+		
+		customFieldProcessor.save(root, b);
+		
+		new ManualClassifier().parse(b);
+		patternClassifier.parse(b);
+		
+		
+		
+		
 		
 		b.recalculate();
 		new HtmlGenerator().output(b, new File(args[1]));

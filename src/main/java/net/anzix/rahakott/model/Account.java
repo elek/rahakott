@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.anzix.rahakott.CurrencyConverter;
 import net.anzix.rahakott.model.config.AccountConfig;
@@ -18,6 +20,8 @@ public class Account {
 	private double openingBalance;
 	private AccountConfig config = new AccountConfig();
 	private double balance = 0;
+	private String[] customFields = new String[0];
+	private Map<String, Transaction> idx = new HashMap<String, Transaction>();
 
 	Account(String string, String type) {
 		this.name = string;
@@ -25,7 +29,8 @@ public class Account {
 	}
 
 	public void add(Transaction transaction) {
-       transactions.add(transaction);
+		transactions.add(transaction);
+		idx.put(transaction.getKey(), transaction);
 	}
 
 	public String getName() {
@@ -144,16 +149,12 @@ public class Account {
 
 	public void removeTransaction(Transaction t) {
 		transactions.remove(t);
+		idx.remove(t.getKey());
 
 	}
 
 	public Transaction getTransaction(String key) {
-		for (Transaction t : transactions) {
-			if (t.getKey().equals(key)) {
-				return t;
-			}
-		}
-		return null;
+		return idx.get(key);
 	}
 
 	@Override
@@ -192,6 +193,14 @@ public class Account {
 		} else if (!type.equals(other.type))
 			return false;
 		return true;
+	}
+
+	public String[] getCustomFields() {
+		return customFields;
+	}
+
+	public void setCustomFields(String[] customFields) {
+		this.customFields = customFields;
 	}
 
 }
